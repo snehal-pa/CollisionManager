@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-   public int getRandomPoints() {
+    public int getRandomPoints() {
         System.out.println("\nHow many points do you want to add?");
         return getIntInput();
 
@@ -24,12 +24,17 @@ public class Menu {
 
     private int getIntInput() {
         Scanner input = new Scanner(System.in);
-        try {
-            return input.nextInt();
-        } catch (InputMismatchException ex) {
-            ex.printStackTrace();
-        }
-        return 0;
+        //int num = 0;
+            try {
+                while (!input.hasNextInt()){
+                    input.next();
+                    System.out.println("Enter correct input!");
+                }
+            } catch (InputMismatchException ex) {
+                ex.printStackTrace();
+            }
+
+        return input.nextInt();
     }
 
 }
